@@ -1,5 +1,5 @@
 # spark-on-k8s-dotnet
-Kubernetes friendly Spark images with dotnet for working with GoogleCloudPlatform/spark-on-k8s-operator
+[Kubernetes](https://github.com/kubernetes/kubernetes) friendly [Spark](https://github.com/apache/spark) [Docker](https://github.com/docker) images with [dotnet/spark](https://github.com/dotnet/spark) for working with [GoogleCloudPlatform/spark-on-k8s-operator](https://github.com/GoogleCloudPlatform/)
 
 
 ## References
