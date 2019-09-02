@@ -1,0 +1,36 @@
+apiVersion: "sparkoperator.k8s.io/v1beta1"
+kind: SparkApplication
+metadata:
+  name: spark-pi-from-source
+  namespace: spark-jobs
+spec:
+  type: Scala
+  mode: cluster
+  image: "spark-on-k8s-dotnet:v2.4.4-from-source"
+  imagePullPolicy: IfNotPresent
+  mainClass: org.apache.spark.examples.SparkPi
+  mainApplicationFile: "local:///opt/spark/examples/jars/spark-examples_2.12-2.4.4.jar"
+  arguments:
+    - "100000"
+  sparkVersion: "2.4.4"
+  restartPolicy:
+    type: Never
+  driver:
+    cores: 0.1
+    coreLimit: "200m"
+    memory: "512m"
+    labels:
+      version: 2.4.4
+    serviceAccount: spark
+  executor:
+    cores: 1
+    instances: 1
+    memory: "512m"
+    labels:
+      version: 2.4.4
+  monitoring:
+    exposeDriverMetrics: true
+    exposeExecutorMetrics: true
+    prometheus:
+      jmxExporterJar: "/prometheus/jmx_prometheus_javaagent-0.12.0.jar"
+      port: 8090

@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  spark-on-k8s-dotnet-from-prebuilt:
+    image: spark-on-k8s-dotnet:v2.4.3-from-prebuilt
+    build:
+      context: .
+      dockerfile: ./from-prebuilt/Dockerfile
+      target: runtime
+      args:
+        SPARK_VERSION: 2.4.3
+        SPARK_SUFFIX: hadoop2.7
+        SPARK_DOTNET_VERSION: 0.4.0
+        SPARK_DOTNET_TARGET_FRAMEWORK: netcoreapp2.1
+        JAVA_VERSION: 8u222
+        DOTNET_PACKAGE: aspnetcore-runtime-2.2
+        DOTNET_SDK_PACKAGE: dotnet-sdk-2.2
+        PROMETHEUS_EXPORTER_VERSION: 0.12.0
+  spark-on-k8s-dotnet-from-source:
+    image: spark-on-k8s-dotnet:v2.4.4-from-source
+    build:
+      context: .
+      dockerfile: ./from-source/Dockerfile
+      target: runtime
+      args:
+        SPARK_TAG: v2.4.4
+        SPARK_DOTNET_TAG: master
+        SPARK_DOTNET_TARGET_FRAMEWORK: netcoreapp2.1
+        HADOOP_PROFILE: hadoop-3.2
+        SCALA_BINARY_VERSION: 2.12
+        SCALA_VERSION: 2.12.8
+        JAVA_VERSION: 8u222
+        MAVEN_VERSION: 3.6.1
+        DOTNET_VERSION: 3.0.0-preview8-28405-07
+        ASPNETCORE_VERSION: 3.0.0-preview8.19405.7
+        DOTNET_SDK_VERSION: 3.0.100-preview8-013656
+        CRAN_MIRROR: https://cloud.r-project.org/
+        PROMETHEUS_EXPORTER_VERSION: 0.12.0
