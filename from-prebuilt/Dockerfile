@@ -38,7 +38,7 @@ FROM openjdk:${JAVA_VERSION}-jdk-slim-buster as build
 ARG SPARK_VERSION
 ARG SPARK_SUFFIX
 ARG SPARK_FILE=spark-${SPARK_VERSION}-bin-${SPARK_SUFFIX}.tgz
-ARG SPARK_URL=https://www-us.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_FILE}
+ARG SPARK_URL=https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_FILE}
 
 # dotnet args
 ARG DOTNET_SDK_PACKAGE
